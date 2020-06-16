@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SALARY CARD</title>
+
+<style>
+
+hr{opacity: 0.2}
+
+h1{font-family:Arial;}
+
+table{border-spacing:10px;}
+
+th{text-align:left;}
+
+td{
+font-family:Arial;
+font-weight:bold;
+}
+
+input[type=text]
+{
+background-color:lightgrey;
+padding:6px;
+border:none;
+width:200px;
+}
+
+input[type=button], input[type=reset]
+{
+width:150px;
+height:50px;
+background-color:green;
+color:white;
+font-family:Arial;
+font-size:18px;
+padding:10px;
+cursor:pointer;
+}
+
+strong{font-family:Arial;}
+
+fieldset { 
+margin-left: 0%;
+margin-right: 100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<fieldset>
+
+
+<h1>SALARY CARD</h1>
+<hr>
+
+<form name="myForm" >
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Salary</th> 
+  </tr>
+
+  <tr>
+    <td>1</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name1"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary1"></td>
+   </tr>
+
+  <tr>
+    <td>2</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name2"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary2"></td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name3"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary3"></td>
+  </tr>
+
+  <tr>
+    <td>4</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name4"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary4"></td>
+  </tr>
+
+  <tr>
+    <td>5</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name5"></td>
+    <td><input type="text"title="Only numbers are allowed" name="salary5"></td>
+  </tr>
+
+  <tr>
+    <td>6</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name6"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary6"></td>
+  </tr>
+
+  <tr>
+    <td>7</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name7"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary7"></td>
+  </tr>
+
+  <tr>
+    <td>8</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name8"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary8"></td>
+  </tr>
+
+  <tr>
+    <td>9</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name9"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary9"></td>
+  </tr>
+
+  <tr>
+    <td>10</td>
+    <td><input type="text" title="Only a-z,A-Z,Spaces are allowed" name="name10"></td>
+    <td><input type="text" title="Only numbers are allowed" name="salary10"></td>
+  </tr>
+</table><br>
+
+<strong>Second Highest Salary: </strong><strong id="secondHigh"></strong><br>
+<strong>Second Lowest Salary: </strong><strong id="secondLow"></strong><br>
+<strong>AVG Salary: </strong><strong id="avg"></strong><br><br>
+
+<input type="button" value="Calculate" onClick="return caluclate()"> 
+<input type="reset" value="Clear">
+
+</form>
+</fieldset>
+
+</body>
+</html>
+
+<script>
+function caluclate() {
+  	var name1 = document.forms["myForm"]["name1"].value;
+	var name2 = document.forms["myForm"]["name2"].value;
+	var name3 = document.forms["myForm"]["name3"].value;
+	var name4 = document.forms["myForm"]["name4"].value;
+	var name5 = document.forms["myForm"]["name5"].value;
+	var name6 = document.forms["myForm"]["name6"].value;
+	var name7 = document.forms["myForm"]["name7"].value;
+	var name8 = document.forms["myForm"]["name8"].value;
+	var name9 = document.forms["myForm"]["name9"].value;
+	var name10 = document.forms["myForm"]["name10"].value;
+	
+	var salary1 = document.forms["myForm"]["salary1"].value;
+	var salary2 = document.forms["myForm"]["salary2"].value;
+	var salary3 = document.forms["myForm"]["salary3"].value;
+	var salary4 = document.forms["myForm"]["salary4"].value;
+	var salary5 = document.forms["myForm"]["salary5"].value;
+	var salary6 = document.forms["myForm"]["salary6"].value;
+	var salary7 = document.forms["myForm"]["salary7"].value;
+	var salary8 = document.forms["myForm"]["salary8"].value;
+	var salary9 = document.forms["myForm"]["salary9"].value;
+	var salary10 = document.forms["myForm"]["salary10"].value;
+
+	var total=0;
+
+	var name=[name1,name2,name3,name4,name5,name6,name7,name8,name9,name10,]
+	var salary=[salary1,salary2,salary3,salary4,salary5,salary6,salary7,salary8,salary9,salary10,]
+	
+	for(var i=0;i<name.length;i++){
+		if(name[i]=="" || salary[i]==""){
+			alert("All feilds must be filled out");
+			return false;
+		}
+	}
+	for(var i=0;i<name.length;i++){
+		if(!name[i].match(/^[a-zA-Z ]*$/)){
+			alert("Only a-z,A-Z,Spaces are allowed in name feild");
+			return false;
+		}
+	}
+	for(var i=0;i<salary.length;i++){
+		if(!salary[i].match(/^[0-9]*$/)){
+			alert("Only numbers are allowed salary feild");
+			return false;
+		}
+	var sal= [Number(salary1),Number(salary2),Number(salary3),Number(salary4),Number(salary5),Number(salary6),Number(salary7),Number(salary8),Number(salary9),Number(salary10) ];
+	}for(var i=0;i<sal.length;i++){
+		
+		for (var j=0;j < sal.length-1; j++)
+		{
+            		if (sal[j] > sal[j+1])
+			{
+                		swap(sal, j, j+1);
+            		}
+        	}
+	}
+	total=sal[0]+sal[1]+sal[2]+sal[3]+sal[4]+sal[5]+sal[6]+sal[7]+sal[8]+sal[9];
+	var avg=total/10;
+	document.getElementById("secondHigh").innerHTML = sal[8];
+	document.getElementById("secondLow").innerHTML = sal[1];
+	document.getElementById("avg").innerHTML = avg;
+	
+	
+}
+function swap(arr, first_Index, second_Index)
+{
+    	var temp = arr[first_Index];
+    	arr[first_Index] = arr[second_Index];
+    	arr[second_Index] = temp;
+}
+</script>
+
+
+
